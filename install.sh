@@ -15,11 +15,6 @@ yes() {
   echo "already exists"
 }
 
-
-cat /etc/apt/sources.list.d/vscode.list
-cat /etc/apt/sources.list.d/sublime-text.list
-cat /etc/apt/sources.list.d/google-chrome.list
-
 # apt up-to-date
 out "running 'apt update'"
 apt -y update 
@@ -43,17 +38,20 @@ git config --global user.name "unfamiliarish"
 # need to restart for flatpak to be added to env var XDG_DATA_DIRS
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-# grep "flatpak" .profile &> /dev/null
-# if [ $? -ne 0 ]; then
-#   printf "\nexport XDG_DATA_DIRS=\"/var/lib/flatpak/exports/share:/home/${USER}/.local/share/flatpak/exports/share:$XDG_DATA_DIRS\"" >> .profile
-# fi
+# --- 
+
+
+
+# ---
 
 out "installing apps"
-# mkdir apps
-# chown $SUDO_UID:$SUDO_GID apps 
+
 apt install -y \
   nautilus-dropbox \
   keepassxc \
+
+flatpak install -y flathub md.obsidian.Obsidian
+# echo 'alias obsidian="flatpak run md.obsidian.Obsidian"' >> .bash_aliases
 
 out "installing chrome"
 exists google-chrome &> /dev/null
@@ -65,15 +63,6 @@ then
 else
   yes
 fi
-
-out "installing obsidian"
-# ls apps/md.obsidian.Obsidian | grep "cannot access"
-# if [ $? -ne 0 ]
-# then
-#   flatpak install -y flathub md.obsidian.Obsidian
-# fi
-flatpak install -y flathub md.obsidian.Obsidian
-echo 'alias obsidian="flatpak run md.obsidian.Obsidian"' >> .bash_aliases
 
 out "installing sublime"
 exists subl &> /dev/null
@@ -103,15 +92,47 @@ else
 fi
  
 # code repos setup 
-mkdir -p ~/code 
-cd ~/code 
+mkdir -p ~/code
 
-git clone https://github.com/unfamiliarish/overthewire.git overthewire
-git clone https://github.com/unfamiliarish/aoc.git aoc
+git clone https://github.com/unfamiliarish/overthewire.git ~/code/overthewire
+git clone https://github.com/unfamiliarish/aoc.git ~/code/aoc
+
+mkdir -p ~/.obsidian
+git clone 
+
+# config 
+# assuming that ~/.config exists - may or may not be true
+
+out "configuring settings"
+
+mkdir -p ~/.ssh
+ssh-keygen -t ed25519 -C "gcchwalik+unfamiliarish@gmail.com"
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+
+# copy sublime user settings and keymaps into sublime
+cp ./sbl/preferences/* ~/.config/sublime-text/Packages/User/
 
 
 # start up apps that need interaction 
-# chrome, dropbox, 
+# chrome, 
+#
+# dropbox should open by default after install complete
+
+# open a bunch of chrome tabs
+# - log in to chrome
+# - enable chrome sync
+# - manage chrome extensions
+# - set keyboard shortcut "enter zapper mode"
+# confirm can access email
+google-chrome \
+  https://accounts.google.com/ \
+  chrome://settings/syncSetup \
+  chrome://extensions/ \
+  chrome://extensions/shortcuts \
+  https://mail.google.com/ \
+
+  &>/dev/null &
 
 
 # restart to have flatpak links for XDG_DATA_DIRS linked correctly

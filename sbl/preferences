@@ -1,5 +1,0 @@
-
-
-// Set to true to automatically save files when switching to a different file
-// or application
-"save_on_focus_lost": false,

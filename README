@@ -1,38 +1,20 @@
 # Dotfiles 
 
-This repo contains my permanent dotfiles so I don't have to reconstruct them each time I have a clean OS install. 
+This repo contains my permanent dotfiles and a clean-OS setup script, so I don't have to deal with configuring my computer on fresh installs (which I do semi-frequently).
 
-It also talks through the various other things I need to do to get my fresh install into a comfortable working state.
+## Installation
 
-## Command to Execute Script 
-`sudo -E ./install.sh`
+To run install effectively, copy the `install-git.sh` script to local, run, then run `install.sh` with the following command:
+```
+sudo -E ./install.sh
+```
 
 ## Not Covered by Script
-- logging into Chrome
-- logging in to Dropbox and starting sync
-- adding Dropbox to File Manager Bookmarks
-- changing Security on keepass to allow double-click on user+pass
-- copying in Sublime preferences 
-  - these are stored in sbl/
-- setting VS Code preferences
+- reverse scroll direction (depends on OS)
+- login to Chrome (login page opened by script though)
+- login to Dropbox and starting sync (dropbox launch after install though)
+- add Dropbox to File Manager Bookmarks (can't do programmatically)
+- change Security on keepass to allow double-click on user+pass (easiest to do manually)
+- set VS Code preferences (easiest to do manually)
 
-## Install
-
-Command line tools:
-- git
-- vim 
-
-Settings:
-- reverse scroll direction (depending on OS)
-
-Applications:
-- chrome 
-- keepass
-- dropbox
-- obsidian 
-- sublime
-- vs code
-
-Chrome extensions:
-- uBlock origin 
 
