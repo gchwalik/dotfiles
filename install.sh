@@ -90,11 +90,12 @@ fi
 # code repos setup 
 mkdir -p ~/code
 
-git clone https://github.com/unfamiliarish/overthewire.git ~/code/overthewire
-git clone https://github.com/unfamiliarish/aoc.git ~/code/aoc
+# i'm not sure this repo is really neccessary
+git clone git@github.com:unfamiliarish/overthewire.git ~/code/overthewire
+git clone git@github.com:unfamiliarish/aoc.git ~/code/aoc
 
 mkdir -p ~/.obsidian
-git clone https://github.com/unfamiliarish/obsidian--my-brain.git ~/.obsidian/my-brain
+git clone git@github.com:unfamiliarish/obsidian--my-brain.git ~/.obsidian/my-brain
 
 # config 
 # assuming that ~/.config exists - may or may not be true
@@ -111,10 +112,8 @@ fi
 # copy sublime user settings and keymaps into sublime
 cp ./sbl/preferences/* ~/.config/sublime-text/Packages/User/
 
-# start up apps that need interaction 
-# chrome, 
-#
-# dropbox should open by default after install complete
+# start up apps that need interaction
+# dropbox should open by default after prev install complete
 
 # open a bunch of chrome tabs
 # - log in to chrome
