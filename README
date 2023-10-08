@@ -6,11 +6,16 @@ This repo contains my permanent dotfiles and a clean-OS setup script, so I don't
 
 To run install effectively, copy the `install-git.sh` script to local, run, then run `install.sh` with the following command:
 ```
-sudo -E ./install.sh
+sudo -E ./scripts/install.sh
 ```
 
 ## Not Covered by Script
-- reverse scroll direction (depends on OS)
+
+### OS specific 
+- reverse scroll direction 
+- power manager - suspend on lid closed
+
+### App logins and preferences
 - login to Chrome (login page opened by script though)
 - login to Dropbox and starting sync (dropbox launch after install though)
 - add Dropbox to File Manager Bookmarks (can't do programmatically)
