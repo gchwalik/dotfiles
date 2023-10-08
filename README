@@ -1,0 +1,38 @@
+# Dotfiles 
+
+This repo contains my permanent dotfiles so I don't have to reconstruct them each time I have a clean OS install. 
+
+It also talks through the various other things I need to do to get my fresh install into a comfortable working state.
+
+## Command to Execute Script 
+`sudo -E ./install.sh`
+
+## Not Covered by Script
+- logging into Chrome
+- logging in to Dropbox and starting sync
+- adding Dropbox to File Manager Bookmarks
+- changing Security on keepass to allow double-click on user+pass
+- copying in Sublime preferences 
+  - these are stored in sbl/
+- setting VS Code preferences
+
+## Install
+
+Command line tools:
+- git
+- vim 
+
+Settings:
+- reverse scroll direction (depending on OS)
+
+Applications:
+- chrome 
+- keepass
+- dropbox
+- obsidian 
+- sublime
+- vs code
+
+Chrome extensions:
+- uBlock origin 
+

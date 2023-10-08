@@ -26,7 +26,3 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-
-
-export XDG_DATA_DIRS="/var/lib/flatpak/exports/share:/home/root/.local/share/flatpak/exports/share:"
-export XDG_DATA_DIRS="/var/lib/flatpak/exports/share:/home/root/.local/share/flatpak/exports/share:"
