@@ -38,10 +38,6 @@ git config --global user.name "unfamiliarish"
 # need to restart for flatpak to be added to env var XDG_DATA_DIRS
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-# --- 
-
-
-
 # ---
 
 out "installing apps"
@@ -98,7 +94,7 @@ git clone https://github.com/unfamiliarish/overthewire.git ~/code/overthewire
 git clone https://github.com/unfamiliarish/aoc.git ~/code/aoc
 
 mkdir -p ~/.obsidian
-git clone 
+git clone https://github.com/unfamiliarish/obsidian--my-brain.git ~/.obsidian/my-brain
 
 # config 
 # assuming that ~/.config exists - may or may not be true
@@ -106,13 +102,14 @@ git clone
 out "configuring settings"
 
 mkdir -p ~/.ssh
-ssh-keygen -t ed25519 -C "gcchwalik+unfamiliarish@gmail.com"
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_ed25519
+if [ ! -f ~/.ssh/id_ed25519 ]; then
+  ssh-keygen -t ed25519 -C "gcchwalik+unfamiliarish@gmail.com"
+  eval "$(ssh-agent -s)"
+  ssh-add ~/.ssh/id_ed25519
+fi
 
 # copy sublime user settings and keymaps into sublime
 cp ./sbl/preferences/* ~/.config/sublime-text/Packages/User/
-
 
 # start up apps that need interaction 
 # chrome, 
@@ -124,14 +121,15 @@ cp ./sbl/preferences/* ~/.config/sublime-text/Packages/User/
 # - enable chrome sync
 # - manage chrome extensions
 # - set keyboard shortcut "enter zapper mode"
-# confirm can access email
+# - confirm can access email
+# - save ssh key into GH (will need to login first as unfamiliarish)
 google-chrome \
   https://accounts.google.com/ \
   chrome://settings/syncSetup \
   chrome://extensions/ \
   chrome://extensions/shortcuts \
   https://mail.google.com/ \
-
+  https://github.com/settings/keys \
   &>/dev/null &
 
 

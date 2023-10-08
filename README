@@ -14,7 +14,9 @@ sudo -E ./install.sh
 - login to Chrome (login page opened by script though)
 - login to Dropbox and starting sync (dropbox launch after install though)
 - add Dropbox to File Manager Bookmarks (can't do programmatically)
-- change Security on keepass to allow double-click on user+pass (easiest to do manually)
+- keepass settings: (easiest to do manually)
+  - security - allow double-click on user+pass
+  - view - hide preview panel
 - set VS Code preferences (easiest to do manually)
-
+- saving ssh key in github
 
