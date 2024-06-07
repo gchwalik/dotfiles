@@ -20,7 +20,7 @@ You'll probably need to run the install script first, to get your ssh set up.
   - https://phoenixnap.com/kb/install-zsh-ubuntu
   - https://github.com/Moarram/headline
   - right-click on terminal, preferences, uncheck use system colors, select scheme solarized-light, and for palette select solarized
-  - change backrgound to solarized base 3, and text to base 01
+  - change backrgound to solarized base 3, and text to base 01, or fuck around
   - https://en.wikipedia.org/wiki/Solarized
 - install zoom
 
