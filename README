@@ -9,6 +9,12 @@ To run install effectively, copy the `install-git.sh` script to local, run, then
 sudo -E ./scripts/install.sh
 ```
 
+## Note
+
+When making changes to this script, make sure that the remote url is set to ssh.
+
+You'll probably need to run the install script first, to get your ssh set up.
+
 ## Not Covered by Script
 
 ### OS specific 
