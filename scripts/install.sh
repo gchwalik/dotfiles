@@ -57,7 +57,10 @@ exec "$SHELL"
 pyenv install 3.12.4
 pyenv global 3.12.4
 
+# ---
+out "pip installations"
 
+python -m pip install django
 
 # ---
 
