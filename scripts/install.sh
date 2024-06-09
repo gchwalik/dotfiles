@@ -42,11 +42,22 @@ apt install -y \
   vim \
   wget \
 
-git config --global user.email "89762294+gchwalik@users.noreply.github.com"
-git config --global user.name "gchwalik"
-
 # need to restart for flatpak to be added to env var XDG_DATA_DIRS
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+# installing pyenv
+sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+curl https://pyenv.run | bash
+
+echo -e 'export PYENV_ROOT="$HOME/.pyenv"\nexport PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+echo -e 'eval "$(pyenv init --path)"\neval "$(pyenv init -)"' >> ~/.zshrc
+exec "$SHELL"
+
+# python3, latest as of 2024-06-09
+pyenv install 3.12.4
+pyenv global 3.12.4
+
+
 
 # ---
 
@@ -73,7 +84,10 @@ if [ ! -f $HOME/.ssh/id_ed25519 ]; then
   ssh-add $HOME/.ssh/id_ed25519
 fi
 
-out "github public key"
+out "github: global config & public key"
+
+git config --global user.email "89762294+gchwalik@users.noreply.github.com"
+git config --global user.name "gchwalik"
 
 printf "log into github and save this key to your account:\n"
 

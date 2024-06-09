@@ -9,7 +9,9 @@ To run install effectively, copy the `install-git.sh` script to local, run, then
 sudo -E ./scripts/install.sh
 ```
 
-## Note
+## Notes
+
+This repo is currently a hodgepodge, since I'm having it make the switch slowly over to zsh from bash. So also is my local config. Also, I don't really get to test this out unless I'm setting up a new machine.
 
 When making changes to this script, make sure that the remote url is set to ssh.
 You'll probably need to run the install script first, to get your ssh set up.
