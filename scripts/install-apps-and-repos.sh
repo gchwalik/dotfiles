@@ -44,7 +44,6 @@ fi
 
 out "installing vscode"
 exists code &> /dev/null
-which code
 if [ $? -ne 0 ]
 then 
   wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
@@ -55,6 +54,48 @@ then
   sudo apt install code
 else
   yes
+fi
+
+# there's a y/n in here somewhere, but i am not sure where
+out "installing docker"
+exists docker &> /dev/null
+if [ $? -ne 0 ]
+then
+  apt-get install ca-certificates curl
+  install -m 0755 -d /etc/apt/keyrings
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+  chmod a+r /etc/apt/keyrings/docker.asc
+
+  # Add the repository to Apt sources:
+  echo \
+    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+    $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+    sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  apt-get update
+
+  apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+  # set up docker group so don't have to run `sudo docker``
+  groupadd docker
+  usermod -aG docker $USER
+  newgrp docker
+else
+  yes
+fi
+
+out "installing anki"
+exists anki &> /dev/null
+apt install zstd
+if [ $? -ne 0 ]; then
+  printf "please complete the installation steps for anki at:\n" ;
+  printf "https://docs.ankiweb.net/platform/linux/installing.html#installing\n\n" ;
+  google-chrome "https://docs.ankiweb.net/platform/linux/installing.html#installing"
+
+  read -n1 -p "When you are done, please type 'y' or 'Y' or the script will exit: " doit
+  case $doit in
+    y|Y) ;;
+    *) exit 0 ;;
+  esac
 fi
 
 
