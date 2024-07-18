@@ -57,6 +57,7 @@ exec "$SHELL"
 pyenv install 3.12.4
 pyenv global 3.12.4
 
+
 # ---
 out "pip installations"
 
@@ -91,6 +92,7 @@ out "github: global config & public key"
 
 git config --global user.email "89762294+gchwalik@users.noreply.github.com"
 git config --global user.name "gchwalik"
+git config --global core.editor vim
 
 printf "log into github and save this key to your account:\n"
 
@@ -98,3 +100,4 @@ cat $HOME/.ssh/id_ed25519.pub
 
 out "next script"
 printf "then run sudo -E ./scripts/install-apps-and-repos.sh\n"
+
