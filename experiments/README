@@ -1,0 +1,9 @@
+xmodmap not working except in xev :T
+
+# commands
+xmodmap 
+xmodmap <modmap file>
+xev -event keyboard
+
+# other
+.Xmodmap file apparently used as default if exists 
