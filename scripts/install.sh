@@ -39,6 +39,7 @@ out "installing tools"
 apt install -y \
   git \
   flatpak \
+  ruby-full \
   vim \
   wget \
 
@@ -46,7 +47,7 @@ apt install -y \
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 # installing pyenv
-sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 curl https://pyenv.run | bash
 
 echo -e 'export PYENV_ROOT="$HOME/.pyenv"\nexport PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
@@ -57,6 +58,25 @@ exec "$SHELL"
 pyenv install 3.12.4
 pyenv global 3.12.4
 
+# node and npm
+
+### default script from: https://nodejs.org/en/download/package-manager/
+### will get outdated
+# installs nvm (Node Version Manager)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
+
+# download and install Node.js (you may need to restart the terminal)
+nvm install 20
+
+# verifies the right Node.js version is in the environment
+node -v # should print `v20.17.0`
+
+# verifies the right npm version is in the environment
+npm -v # should print `10.8.2`
+###
+
+# tmux
+apt install tmux
 
 # ---
 out "pip installations"
