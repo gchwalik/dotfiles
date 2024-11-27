@@ -43,6 +43,8 @@ apt install -y \
   vim \
   wget \
 
+gem install rails
+
 # need to restart for flatpak to be added to env var XDG_DATA_DIRS
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
