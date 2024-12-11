@@ -80,6 +80,12 @@ npm -v # should print `10.8.2`
 # tmux
 apt install tmux
 
+# install vim-visual-multi
+# link: https://github.com/mg979/vim-visual-multi
+mkdir -p ~/.vim/pack/plugins/start
+git clone https://github.com/mg979/vim-visual-multi
+~/.vim/pack/plugins/start/vim-visual-multii
+
 # ---
 out "pip installations"
 
